@@ -10,6 +10,18 @@ public class Enemy : MonoBehaviour
     public float delayTime = 0.5f;
     public float transparency = 0.5f;
     private int i = 0;
+    public int maxhealth;
+    [SerializeField] private HealthBar healthBar;
+
+    private void Start()
+    {
+        maxhealth = health;
+        healthBar.UpdateHealthBar(maxhealth, health);
+    }
+    private void Update()
+    {
+        healthBar.UpdateHealthBar(maxhealth, health);
+    }
     public void TakeDamage(int damage)
     {
         health -= damage;
@@ -39,17 +51,7 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject, delayTime);
         i = 0;
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public bool isDead()
     {
         if (health <= 0)
