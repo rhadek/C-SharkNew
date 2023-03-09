@@ -32,11 +32,13 @@ public class playermovement : MonoBehaviour
                 {
                     animator.SetFloat("Spinjitzu", 0);
                     spinjitzusound.Stop();
+                    
                 }
                 else
                 {
                     animator.SetFloat("Spinjitzu", 1);
                     spinjitzusound.Play();
+                    
                 }
             }
             if (Input.GetMouseButtonDown(1))

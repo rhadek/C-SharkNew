@@ -14,11 +14,16 @@ public class SwordShiton : MonoBehaviour
         if (other.CompareTag("Enemy") /*&& other.GetType() == typeof(CapsuleCollider2D*//*)*/)
         {
             // Destroy the enemy game object
-            Enemy enemy = other.GetComponent<Enemy>();
-            if (enemy != null)
+            if (playerCollider.enabled == true)
             {
-                enemy.TakeDamage(damage);
+
+                Enemy enemy = other.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(damage);
+                }
             }
+            
         }
     }
 }
