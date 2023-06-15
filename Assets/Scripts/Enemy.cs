@@ -14,37 +14,37 @@ public class Enemy : MonoBehaviour
     [SerializeField] private HealthBar healthBar;
     public GameObject player;
     public bool flip;
-    public float speed;
-    public float Startspeed;
+    //public float speed;
+    //public float Startspeed;
     public Animator animator;
-    public BoxCollider2D enemyCollider;
-    public int damage = 30;
+    //public BoxCollider2D enemyCollider;
+    //public int damage = 30;
     private void Start()
     {
         health = maxhealth;
         healthBar.UpdateHealthBar(maxhealth, health);
-        Startspeed = speed;
+        //Startspeed = speed;
     }
     public void Update()
     {
         healthBar.UpdateHealthBar(maxhealth, health);
-        Vector3 scale = transform.localScale;
-        if (Mathf.Abs(player.transform.position.x - transform.position.x) > 0.1f)
-        {
-            if (player.transform.position.x > transform.position.x)
-            {
-                scale.x = Mathf.Abs(scale.x) * -1 * (flip ? -1 : 1);
-                transform.Translate(speed * Time.deltaTime, 0, 0);
-                animator.SetFloat("Run", 1);
-            }
-            else
-            {
-                scale.x = Mathf.Abs(scale.x) * (flip ? -1 : 1);
-                transform.Translate(speed * Time.deltaTime * -1, 0, 0);
-                animator.SetFloat("Run", 1);
-            }
-            transform.localScale = scale;
-        }
+        //Vector3 scale = transform.localScale;
+        //if (Mathf.Abs(player.transform.position.x - transform.position.x) > 0.1f)
+        //{
+        //    if (player.transform.position.x > transform.position.x)
+        //    {
+        //        scale.x = Mathf.Abs(scale.x) * -1 * (flip ? -1 : 1);
+        //        transform.Translate(speed * Time.deltaTime, 0, 0);
+        //        animator.SetFloat("Run", 1);
+        //    }
+        //    else
+        //    {
+        //        scale.x = Mathf.Abs(scale.x) * (flip ? -1 : 1);
+        //        transform.Translate(speed * Time.deltaTime * -1, 0, 0);
+        //        animator.SetFloat("Run", 1);
+        //    }
+        //    transform.localScale = scale;
+        //}
 
 
     }
@@ -53,37 +53,37 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("Player") /*&& other.GetType() == typeof(CapsuleCollider2D*//*)*/)
         {
             // Destroy the enemy game object
-            if (enemyCollider.enabled == true)
-            {
+            //if (enemyCollider.enabled == true)
+            //{
 
-                PlayerHealth player = other.GetComponent<PlayerHealth>();
-                if (player != null)
-                {
-                    player.TakeDamage(damage);
-                }
-            }
+            //    PlayerHealth player = other.GetComponent<PlayerHealth>();
+            //    if (player != null)
+            //    {
+            //        player.TakeDamage(damage);
+            //    }
+            //}
 
         }
     }
-    private IEnumerator ResetAttack()
-    {
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-        animator.SetFloat("Attack", 0);
-        speed = Startspeed;
-    }
+    //private IEnumerator ResetAttack()
+    //{
+    //    yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+    //    animator.SetFloat("Attack", 0);
+    //    speed = Startspeed;
+    //}
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.collider.CompareTag("Player"))
-        {
+        //if (other.collider.CompareTag("Player"))
+        //{
 
-            Rigidbody2D playerRigidbody = other.gameObject.GetComponent<Rigidbody2D>();
-            if (playerRigidbody != null)
-            {
-                speed = 0f;
-                animator.SetFloat("Attack", 1);
-                StartCoroutine(ResetAttack());
-            }
-        }
+        //    Rigidbody2D playerRigidbody = other.gameObject.GetComponent<Rigidbody2D>();
+        //    if (playerRigidbody != null)
+        //    {
+        //        speed = 0f;
+        //        animator.SetFloat("Attack", 1);
+        //        StartCoroutine(ResetAttack());
+        //    }
+        //}
     }
     public void TakeDamage(int damage)
     {

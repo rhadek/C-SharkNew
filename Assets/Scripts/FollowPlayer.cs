@@ -20,7 +20,7 @@ public class FollowPlayer : MonoBehaviour
     }
     private void LateUpdate()
     {
-        Vector3 vector3 = new Vector3(0, playerTransform.position.y, 0);
+        Vector3 vector3 = new Vector3(0, 0, 0);
         transform.position = playerTransform.position + cameraoff - vector3;
     }
 }
